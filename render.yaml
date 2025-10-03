@@ -3,8 +3,11 @@ services:
     name: ck2-app
     env: node
     plan: starter
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: npm ci && npm run build
+    # Bind to Render's port:
+    startCommand: npx next start -p $PORT
     autoDeploy: true
     healthCheckPath: /
-    envVars: []
+    envVars:
+      - key: NODE_VERSION
+        value: 20.14.0
