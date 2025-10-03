@@ -4,7 +4,8 @@ services:
     env: node
     plan: starter
     buildCommand: npm ci && npm run build
-    startCommand: npm run start
+    # Use Render's port:
+    startCommand: npx next start -p $PORT
     autoDeploy: true
     healthCheckPath: /
     envVars: []
