@@ -3,9 +3,8 @@ services:
     name: ck2-app
     env: node
     plan: starter
-    buildCommand: npm ci && npm run build
-    # Use Render's port:
-    startCommand: npx next start -p $PORT
+    buildCommand: npm install && npm run build
+    startCommand: npm start
     autoDeploy: true
     healthCheckPath: /
     envVars: []
