@@ -1,22 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// app/layout.tsx  — ROOT LAYOUT (plain wrapper)
 import "./globals.css";
+import React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "CK2",
-  description: "Contractor Kit v2",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+    <html lang="en">
+      <body className="min-h-screen bg-white text-slate-900">
         {children}
       </body>
     </html>
