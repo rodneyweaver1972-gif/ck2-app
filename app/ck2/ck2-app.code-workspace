@@ -1,0 +1,6 @@
+{
+  "folders": [
+    { "path": ".", "name": "ROOT (site-wide)" },
+    { "path": "app/ck2", "name": "CK2 (route layout)" }
+  ]
+}
