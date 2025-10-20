@@ -1,0 +1,5 @@
+ LIVE_STRIPE_LINK. =   https://buy.stripe.com/14AfZg50W6Fh64g5dL5wI01
+
+LEAD_FORM_LINK.=   https://forms.gle/c6CDZeqipMZ2cibL8
+
+SUGGESTION_BOX_LINK = https://forms.gle/uKdB5GWtoyV3K7tw9

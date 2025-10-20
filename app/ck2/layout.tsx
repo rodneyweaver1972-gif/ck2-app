@@ -1,19 +1,22 @@
-// app/ck2/layout.tsx  — CK2-ONLY LAYOUT (with POP TEST)
-import React from "react";
+import Link from "next/link";
+import type { ReactNode } from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+// Live Google Form links
+const FEEDBACK_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfahtEn1tjfUjNbDMQ6vIThVA_xhRfmFGgXvDsQEV312LX_8g/viewform?usp=header";
+const TESTIMONIALS_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfwbI6c3HGrWD54YZJ-BJe94CzDF0rYCMLqwA8uRDYcV4evKg/viewform?usp=header";
+
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* BACKGROUND (bold so you SEE it) */}
+    <div className="relative min-h-screen overflow-hidden bg-white text-gray-900">
+      {/* Background (kept) */}
       <div
         className="absolute inset-0 -z-30"
         style={{
           backgroundColor: "#f0f9ff",
-          backgroundImage: `
-            radial-gradient(circle at 15% 10%, rgba(16,185,129,0.45), transparent 35%),
-            radial-gradient(circle at 85% 85%, rgba(59,130,246,0.45), transparent 40%),
-            radial-gradient(circle at 110% -10%, rgba(139,92,246,0.45), transparent 30%)
-          `,
+          backgroundImage:
+            "radial-gradient(circle at 15% 10%, rgba(16,185,129,0.45), transparent 35%), radial-gradient(circle at 85% 85%, rgba(59,130,246,0.45), transparent 40%), radial-gradient(circle at 110% -10%, rgba(139,92,246,0.45), transparent 30%)",
         }}
       />
       <div
@@ -25,21 +28,37 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }}
       />
 
-      {/* TOP RIBBON — TEMP so we know this layout is live */}
-      <div className="relative bg-sky-700 text-white shadow">
-        <div className="mx-auto max-w-6xl px-4 py-3">
-          <div className="text-sm/5 font-medium">
-            🌟 CK2 — LAYOUT ACTIVE (TEMP)
-          </div>
-        </div>
-      </div>
+      {/* Header with buttons */}
+      <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+          <Link href="/ck2" className="text-lg font-semibold tracking-tight">
+            CK2
+          </Link>
 
-      {/* CONTENT CARD (narrow so the background peeks around it) */}
-      <div className="relative mx-auto max-w-4xl px-4 py-8">
-        <div className="rounded-2xl bg-white/92 backdrop-blur-md p-4 sm:p-6 shadow-2xl ring-1 ring-black/5">
-          {children}
+          <nav className="flex items-center gap-2">
+            <a
+              href={FEEDBACK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-xl border px-3 py-2 text-sm font-medium hover:bg-gray-50"
+            >
+              🛠️ Feedback
+            </a>
+
+            <a
+              href={TESTIMONIALS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-xl bg-amber-500 px-3 py-2 text-sm font-semibold text-white hover:brightness-110"
+            >
+              ⭐ Leave a Testimonial
+            </a>
+          </nav>
         </div>
-      </div>
+      </header>
+
+      {/* Page content */}
+      <main className="relative z-0 mx-auto max-w-5xl px-4 py-6">{children}</main>
     </div>
   );
 }
