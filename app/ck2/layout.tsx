@@ -9,10 +9,10 @@ const TESTIMONIALS_URL =
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white text-gray-900">
-      {/* Background (kept) */}
+    <div className="relative min-h-screen overflow-hidden text-gray-900">
+      {/* Background layers (now visible) */}
       <div
-        className="absolute inset-0 -z-30"
+        className="absolute inset-0 z-0"
         style={{
           backgroundColor: "#f0f9ff",
           backgroundImage:
@@ -20,7 +20,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         }}
       />
       <div
-        className="absolute inset-0 -z-20"
+        className="absolute inset-0 z-0"
         style={{
           opacity: 0.7,
           backgroundImage: "radial-gradient(#a7f3d0 2.2px, transparent 2.2px)",
@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       />
 
       {/* Header with buttons */}
-      <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+      <header className="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <Link href="/ck2" className="text-lg font-semibold tracking-tight">
             CK2
@@ -57,8 +57,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      {/* Page content */}
-      <main className="relative z-0 mx-auto max-w-5xl px-4 py-6">{children}</main>
+      {/* Page content above background */}
+      <main className="relative z-10 mx-auto max-w-5xl px-4 py-6">{children}</main>
     </div>
   );
 }
